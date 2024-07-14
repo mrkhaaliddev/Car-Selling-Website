@@ -25,9 +25,15 @@ const Header = () => {
             <li className="cursor-pointer hover:text-primary">
               <Link href="/home">Home</Link>
             </li>
-            <li className="cursor-pointer hover:text-primary">Cars</li>
-            <li className="cursor-pointer hover:text-primary">About Us</li>
-            <li className="cursor-pointer hover:text-primary">Contact Us</li>
+            <Link href="#">
+              <li className="cursor-pointer hover:text-primary">Cars</li>
+            </Link>
+            <Link href="/aboutus">
+              <li className="cursor-pointer hover:text-primary">About Us</li>
+            </Link>
+            <Link href="#">
+              <li className="cursor-pointer hover:text-primary">Contact Us</li>
+            </Link>
           </ul>
         </nav>
         <div className="flex space-x-1">

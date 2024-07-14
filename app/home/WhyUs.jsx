@@ -35,7 +35,7 @@ const WhyUs = () => {
 
   return (
     <div className="py-16 bg-[#F9FBFC] mb-10 mt-10">
-      <div className="max-w-full px-4 mx-auto sm:px-6 lg:px-60">
+      <div className="max-w-full px-4 mx-auto sm:px-6 lg:px-40">
         <h2 className="mb-8 text-[34px] font-semibold text-center text-gray-900">
           Why Choose Us?
         </h2>

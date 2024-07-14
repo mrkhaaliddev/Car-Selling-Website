@@ -31,7 +31,7 @@ const reviews = [
   {
     name: "Jane Doe",
     role: "Artist",
-    rating: 4.5,
+    rating: 4.0,
     review:
       "I'd recommend this dealership to anyone looking for a smooth and hassle-free car buying experience.",
     image: Man2,
@@ -48,7 +48,7 @@ const reviews = [
 
 const CustomerReview = () => {
   return (
-    <div className="py-32 lg:px-60 md:px-40 px-10 flex justify-center items-center bg-[#F9FBFC]">
+    <div className="py-32 lg:px-40 md:px-20 px-10 flex justify-center items-center bg-[#F9FBFC]">
       <div className="w-full">
         <div className="flex flex-col mb-10 text-center lg:flex-row lg:items-center lg:justify-between lg:text-start">
           <h2 className="mb-8 text-[34px] font-semibold text-gray-900">
@@ -63,7 +63,7 @@ const CustomerReview = () => {
             <CarouselContent>
               {reviews.map((review, index) => (
                 <CarouselItem key={index}>
-                  <Card className="flex flex-col items-center justify-center p-5 mx-auto md:flex-row">
+                  <Card className="flex flex-col items-center justify-center p-5 mx-auto bg-transparent border-none select-none md:flex-row">
                     <CardHeader className="flex-shrink-0">
                       <div className="w-80 h-80">
                         <Image
@@ -78,8 +78,17 @@ const CustomerReview = () => {
                     <CardContent className="flex-grow pl-0 text-center md:pl-8 md:text-left">
                       <div className="flex items-center justify-center mb-4 md:justify-start">
                         <div className="flex items-center text-yellow-500">
-                          {[...Array(5)].map((_, i) => (
-                            <span key={i}>&#9733;</span>
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <span
+                              key={i}
+                              className={
+                                i < review.rating
+                                  ? "text-yellow-500"
+                                  : "text-gray-400"
+                              }
+                            >
+                              &#9733;
+                            </span>
                           ))}
                         </div>
                         <span className="ml-2 text-yellow-500">

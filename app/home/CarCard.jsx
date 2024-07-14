@@ -208,12 +208,12 @@ const settings = {
 
 const CarCard = () => {
   return (
-    <div className="px-20 mt-20 mb-20 lg:px-60 md:px-40">
+    <div className="px-10 mt-20 mb-20 lg:px-40 md:px-20">
       <Slider {...settings} className="">
         {carData.map((car, index) => (
           <Card
             key={index}
-            className="overflow-hidden bg-white rounded-lg shadow-lg "
+            className="overflow-hidden bg-white rounded-lg shadow-lg"
           >
             <CardHeader className="relative p-0">
               <img
