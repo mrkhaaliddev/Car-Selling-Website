@@ -11,11 +11,11 @@ import { TbCarSuv } from "react-icons/tb";
 
 const WhatWeHave = () => {
   return (
-    <div className="px-40 mb-10">
+    <div className="px-20 mb-10 lg:px-60 md:px-40">
       <h1 className="text-[34px] leading-loose font-semibold text-center pb-4">
         Browse by Type
       </h1>
-      <div className="grid grid-cols-8 gap-4">
+      <div className="grid grid-cols-3 gap-4 lg:grid-cols-9 md:grid-cols-6">
         <Card className="flex flex-col items-center justify-center w-full pt-6 text-center cursor-pointer h-28 gap-y-3">
           <CardTitle className="mx-auto">
             <TbCarSuv className="w-7 h-7" />
@@ -62,6 +62,14 @@ const WhatWeHave = () => {
           </CardTitle>
           <CardContent>
             <p className="text-sm">Convertible</p>
+          </CardContent>
+        </Card>
+        <Card className="flex flex-col items-center justify-center w-full pt-6 text-center cursor-pointer h-28 gap-y-3">
+          <CardTitle className="mx-auto">
+            <TbCarSuv className="w-7 h-7" />
+          </CardTitle>
+          <CardContent>
+            <p className="text-sm">Truck</p>
           </CardContent>
         </Card>
         <Card className="flex flex-col items-center justify-center w-full pt-6 text-center cursor-pointer h-28 gap-y-3">

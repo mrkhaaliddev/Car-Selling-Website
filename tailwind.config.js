@@ -33,6 +33,10 @@ module.exports = {
           DEFAULT: "#B1DED6",
           foreground: "#B1DED6",
         },
+        tertiary: {
+          DEFAULT: "#EEF1FB",
+          foreground: "#EEF1FB",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",

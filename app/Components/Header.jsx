@@ -10,7 +10,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div>
-      <header className="flex items-center justify-between py-5 sm:px-5 md:px-20 lg:px-32 text-textPrimary">
+      <header className="sticky flex items-center justify-between py-5 sm:px-5 md:px-20 lg:px-32 text-textPrimary">
         <Link href="/home">
           <Image
             src={Logo}
