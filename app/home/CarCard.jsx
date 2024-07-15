@@ -208,73 +208,75 @@ const settings = {
 
 const CarCard = () => {
   return (
-    <div className="px-10 mt-20 mb-20 lg:px-40 md:px-20">
-      <Slider {...settings} className="">
+    <div className="px-10 mt-20 mb-20 lg:px-32 md:px-20">
+      <h1 className="pb-20 text-4xl font-bold text-center text-black ">
+        The Most Searched Cars
+      </h1>
+      <Slider {...settings}>
         {carData.map((car, index) => (
-          <Card
-            key={index}
-            className="overflow-hidden bg-white rounded-lg shadow-lg"
-          >
-            <CardHeader className="relative p-0">
-              <img
-                className="object-cover w-full h-48 cursor-pointer"
-                src={car.image}
-                alt="Car"
-              />
-              {car.label && (
-                <div
-                  className={`absolute px-3 py-2 text-xs font-semibold text-white rounded-full ${
-                    car.label === "Best Value"
-                      ? "bg-blue-400"
-                      : car.label === "Special Offer"
-                      ? "bg-yellow-400"
-                      : "bg-green-400"
-                  } top-2 left-2`}
-                >
-                  {car.label}
+          <div key={index} className="px-1">
+            <Card className="overflow-hidden bg-white rounded-lg shadow-lg ">
+              <CardHeader className="relative p-0">
+                <img
+                  className="object-cover w-full h-48 cursor-pointer"
+                  src={car.image}
+                  alt="Car"
+                />
+                {car.label && (
+                  <div
+                    className={`absolute px-3 py-2 text-xs font-semibold text-white rounded-full ${
+                      car.label === "Best Value"
+                        ? "bg-blue-400"
+                        : car.label === "Special Offer"
+                        ? "bg-yellow-400"
+                        : "bg-green-400"
+                    } top-2 left-2`}
+                  >
+                    {car.label}
+                  </div>
+                )}
+                <div className="absolute p-2 text-gray-500 bg-white rounded-full shadow top-2 right-2">
+                  <BsBookmark className="w-4 h-4" />
                 </div>
-              )}
-              <div className="absolute p-2 text-gray-500 bg-white rounded-full shadow top-2 right-2">
-                <BsBookmark className="w-4 h-4" />
-              </div>
-            </CardHeader>
-            <CardContent className="p-6 text-white bg-[#050B20]">
-              <CardTitle className="text-lg font-bold cursor-pointer">
+              </CardHeader>
+              <CardContent className="p-6 text-white bg-[#050B20]">
+                <CardTitle className="text-lg font-bold cursor-pointer">
+                  <Button
+                    variant="link"
+                    className="p-0 text-lg font-bold text-white cursor-pointer"
+                  >
+                    {car.title}
+                  </Button>
+                </CardTitle>
+                <CardDescription className="text-sm">
+                  {car.description}
+                </CardDescription>
+                <div className="flex items-center justify-between mt-4 text-sm gap-x-5">
+                  <div className="flex flex-col items-center gap-2">
+                    <RxTimer className="text-xl" />
+                    {car.mileage}
+                  </div>
+                  <div className="flex flex-col items-center gap-2 ml-4">
+                    <FaGasPump className="text-xl" />
+                    {car.fuel}
+                  </div>
+                  <div className="flex flex-col items-center gap-2 ml-4">
+                    <FaCogs className="text-xl" />
+                    {car.transmission}
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter className="flex items-center justify-between p-6 text-white bg-[#050B20]">
+                <span className="text-lg font-bold">{car.price}</span>
                 <Button
                   variant="link"
-                  className="p-0 text-lg font-bold text-white cursor-pointer"
+                  className="flex items-center text-white gap-x-2"
                 >
-                  {car.title}
+                  View Details <BsArrowUpRight />
                 </Button>
-              </CardTitle>
-              <CardDescription className="text-sm">
-                {car.description}
-              </CardDescription>
-              <div className="flex items-center justify-between mt-4 text-sm gap-x-5">
-                <div className="flex flex-col items-center gap-2">
-                  <RxTimer className="text-xl" />
-                  {car.mileage}
-                </div>
-                <div className="flex flex-col items-center gap-2 ml-4">
-                  <FaGasPump className="text-xl" />
-                  {car.fuel}
-                </div>
-                <div className="flex flex-col items-center gap-2 ml-4">
-                  <FaCogs className="text-xl" />
-                  {car.transmission}
-                </div>
-              </div>
-            </CardContent>
-            <CardFooter className="flex items-center justify-between p-6 text-white bg-[#050B20]">
-              <span className="text-lg font-bold">{car.price}</span>
-              <Button
-                variant="link"
-                className="flex items-center text-white gap-x-2"
-              >
-                View Details <BsArrowUpRight />
-              </Button>
-            </CardFooter>
-          </Card>
+              </CardFooter>
+            </Card>
+          </div>
         ))}
       </Slider>
     </div>

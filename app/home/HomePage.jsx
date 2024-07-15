@@ -17,6 +17,7 @@ import WhyUs from "./WhyUs";
 import CarCard from "./CarCard";
 import Count from "./Count";
 import CustomerReview from "./CustomerReview";
+import OurTeam from "./OurTeam";
 
 const HomePage = () => {
   return (
@@ -97,6 +98,7 @@ const HomePage = () => {
       <hr />
       <Count />
       <hr />
+      <OurTeam />
       <CustomerReview />
     </>
   );
