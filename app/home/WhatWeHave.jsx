@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { TbCarSuv } from "react-icons/tb";
+import Toyota from "../../public/OurCars/Toyota.png";
 import BMW from "../../public/OurCars/BMW.png";
 import Ford from "../../public/OurCars/Ford.png";
 import Mercedesbenz from "../../public/OurCars/Mercedesbenz.png";
@@ -32,7 +33,7 @@ const WhatWeHave = () => {
         <Card className="flex flex-col items-center justify-center w-full pt-6 text-center cursor-pointer h-36 hover:border-primary gap-y-3">
           <CardTitle className="mx-auto">
             <Image
-              src={Volkswagen}
+              src={Toyota}
               alt="Volkswagen"
               width={80}
               height={80}
@@ -40,7 +41,7 @@ const WhatWeHave = () => {
             />
           </CardTitle>
           <CardContent>
-            <p className="text-sm">Audi</p>
+            <p className="text-sm">Toyota</p>
           </CardContent>
         </Card>
         <Card className="flex flex-col items-center justify-center w-full pt-6 text-center cursor-pointer h-36 hover:border-primary gap-y-3">

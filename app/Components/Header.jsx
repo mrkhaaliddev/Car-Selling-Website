@@ -28,10 +28,10 @@ const Header = () => {
             <Link href="#">
               <li className="cursor-pointer hover:text-primary">Cars</li>
             </Link>
-            <Link href="/aboutus">
+            <Link href="/aboutUs">
               <li className="cursor-pointer hover:text-primary">About Us</li>
             </Link>
-            <Link href="#">
+            <Link href="/contactUs">
               <li className="cursor-pointer hover:text-primary">Contact Us</li>
             </Link>
           </ul>
@@ -58,10 +58,18 @@ const Header = () => {
             className="absolute cursor-pointer top-2 right-5"
           />
           <ul className="flex flex-col p-6 space-y-4">
-            <li className="cursor-pointer hover:text-primary">Home</li>
-            <li className="cursor-pointer hover:text-primary">Cars</li>
-            <li className="cursor-pointer hover:text-primary">About Us</li>
-            <li className="cursor-pointer hover:text-primary">Contact Us</li>
+            <Link href="/home">
+              <li className="cursor-pointer hover:text-primary">Home</li>
+            </Link>
+            <Link to="/cars">
+              <li className="cursor-pointer hover:text-primary">Cars</li>
+            </Link>
+            <Link to="/aboutUs">
+              <li className="cursor-pointer hover:text-primary">About Us</li>
+            </Link>
+            <Link to="/contactus">
+              <li className="cursor-pointer hover:text-primary">Contact Us</li>
+            </Link>
             <li>
               <Link href="/login">
                 <button className="w-full px-4 py-2 text-white transition rounded-md bg-primary hover:bg-primary-dark">

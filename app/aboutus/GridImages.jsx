@@ -1,69 +1,93 @@
 import React from "react";
 import Image from "next/image";
 import Man from "../../public/Man.jpg";
-import Man2 from "../../public/Man2.jpg";
-import Man3 from "../../public/Man3.jpg";
-import BMW from "../../public/OurCars/BMW.png";
-import Ford from "../../public/OurCars/Ford.png";
-import Mercedesbenz from "../../public/OurCars/Mercedesbenz.png";
-import Tesla from "../../public/OurCars/Tesla.png";
-import Volkswagen from "../../public/OurCars/Volkswagen.png";
+import Handshake from "../../public/AboutUs/Handshake.png";
+import Car1 from "../../public/AboutUs/Handshake.png";
+import Car2 from "../../public/AboutUs/Handshake.png";
+import Car3 from "../../public/AboutUs/Handshake.png";
 
 const GridImages = () => {
   return (
     <div className="px-4 py-10 lg:px-40 md:px-20">
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
-        <div className="flex items-center justify-center col-span-1 text-white rounded-lg bg-primary">
-          <div className="text-center">
-            <p className="text-4xl font-bold">45</p>
-            <p className="text-xl">Years in Business</p>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
+        {/* First Column */}
+        <div className="flex flex-col items-center justify-center col-span-2 gap-4">
+          <div className="w-full px-4 pt-20 pb-10 text-white rounded-lg bg-primary">
+            <div className="text-center">
+              <p className="text-4xl font-bold">45</p>
+              <p className="text-xl">Years in Business</p>
+            </div>
+          </div>
+          <div className="w-full">
+            <div className="aspect-w-4 aspect-h-3">
+              <Image
+                src={Handshake}
+                alt="Business Image 1"
+                layout="responsive"
+                width={500}
+                height={150}
+                className="object-cover rounded-lg"
+              />
+            </div>
           </div>
         </div>
-        <div className="col-span-1">
-          <Image
-            src={Man3}
-            alt="Business Image 1"
-            layout="responsive"
-            width={500}
-            height={300}
-            className="rounded-lg"
-          />
-        </div>
-        <div className="grid grid-cols-1 col-span-2 gap-4">
-          <Image
-            src={BMW}
-            alt="Business Image 2"
-            layout="responsive"
-            width={250}
-            height={150}
-            className="rounded-lg"
-          />
-          {/* <Image
-            src={Mercedesbenz}
-            alt="Business Image 3"
-            layout="responsive"
-            width={250}
-            height={150}
-            className="rounded-lg"
-          /> */}
-          {/* <Image
-            src={Ford}
-            alt="Business Image 4"
-            layout="responsive"
-            width={250}
-            height={150}
-            className="rounded-lg"
-          />
-          <div className="grid-cols-4">
+
+        {/* Main Image */}
+        <div className="col-span-3">
+          <div className="aspect-w-16 aspect-h-9">
             <Image
-              src={Volkswagen}
-              alt="Business Image 5"
+              src={Man}
+              alt="Business Image 2"
               layout="responsive"
-              width={250}
-              height={150}
-              className="rounded-lg"
+              width={500}
+              height={300}
+              className="object-cover rounded-lg"
             />
-          </div> */}
+          </div>
+        </div>
+
+        {/* Right Images */}
+        <div className="grid grid-cols-2 col-span-6 gap-4">
+          <div className="aspect-w-4 aspect-h-3">
+            <Image
+              src={Car1}
+              alt="Car Image 1"
+              layout="responsive"
+              width={500}
+              height={300}
+              className="object-cover rounded-lg"
+            />
+          </div>
+          <div className="aspect-w-4 aspect-h-3">
+            <Image
+              src={Car2}
+              alt="Car Image 2"
+              layout="responsive"
+              width={500}
+              height={300}
+              className="object-cover rounded-lg"
+            />
+          </div>
+          <div className="aspect-w-4 aspect-h-3">
+            <Image
+              src={Car3}
+              alt="Car Image 3"
+              layout="responsive"
+              width={500}
+              height={300}
+              className="object-cover rounded-lg"
+            />
+          </div>
+          <div className="aspect-w-4 aspect-h-3">
+            <Image
+              src={Handshake}
+              alt="Car Image 4"
+              layout="responsive"
+              width={500}
+              height={300}
+              className="object-cover rounded-lg"
+            />
+          </div>
         </div>
       </div>
     </div>

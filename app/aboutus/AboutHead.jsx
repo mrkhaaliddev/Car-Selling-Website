@@ -3,7 +3,7 @@ import React from "react";
 const AboutHead = () => {
   return (
     <div className="w-full px-4 py-10 lg:px-40 md:px-20">
-      <div className="mb-4">
+      <div className="mb-6">
         <a href="/" className="text-primary">
           Home
         </a>{" "}
