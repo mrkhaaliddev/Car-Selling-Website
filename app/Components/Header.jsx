@@ -5,9 +5,26 @@ import Logo from "../../public/Tayo_cars_Logo.png";
 import { IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Link from "next/link";
+import User from "../../public/user.png";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
+  const LogOutUser = () => {
+    localStorage.removeItem("userInfo");
+    window.location.reload();
+  };
+
   return (
     <div>
       <header className="sticky flex items-center justify-between py-5 sm:px-5 md:px-20 lg:px-32 text-textPrimary">
@@ -43,11 +60,34 @@ const Header = () => {
           >
             <RxHamburgerMenu size={26} />
           </button>
-          <Link href="/login">
-            <button className="px-4 py-2 text-white transition rounded-md md:block text-textLight bg-primary hover:bg-primary-dark">
-              Sign In
-            </button>
-          </Link>
+          {userInfo ? (
+            <div className="flex items-center space-x-4">
+              <p className="cursor-pointer hover:text-primary">
+                {userInfo.name}
+              </p>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="border-none outline-none cursor-pointer">
+                  <Image src={User} width={43} height={43} />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent>
+                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    onClick={LogOutUser}
+                    className="cursor-pointer"
+                  >
+                    LogOut
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          ) : (
+            <Link href="/login">
+              <button className="px-4 py-2 text-white transition rounded-md md:block text-textLight bg-primary hover:bg-primary-dark">
+                Sign In
+              </button>
+            </Link>
+          )}
         </div>
       </header>
       {isMenuOpen && (

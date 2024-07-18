@@ -30,7 +30,7 @@ module.exports = {
           foreground: "#007054",
         },
         secondary: {
-          DEFAULT: "#B1DED6",
+          DEFAULT: "#344255",
           foreground: "#B1DED6",
         },
         tertiary: {

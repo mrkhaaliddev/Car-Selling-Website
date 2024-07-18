@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { Key, Lock, Mail, User } from "react-feather";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 // import { useDispatch, useSelector } from "react-redux";
 // import { Link, useNavigate } from "react-router-dom";
 // import { useRegisterMutation } from "../../redux/users/authUserSlice.js";
@@ -128,7 +129,7 @@ const SignUp = () => {
                   {...register("confirmPassword", {
                     required: "confirmPassword is required",
                     validate: (value) =>
-                      value === password || "The passwords do not match",
+                      value === password || toast("The passwords do not match"),
                   })}
                   placeholder="ConfirmPassword"
                 />

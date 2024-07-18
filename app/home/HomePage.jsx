@@ -14,7 +14,7 @@ import Image from "next/image";
 import HomeCar from "../././../public/HomePageCar.png";
 import WhatWeHave from "./WhatWeHave";
 import WhyUs from "./WhyUs";
-import CarCard from "./CarCard";
+import CarCard from "../cars/CarCard";
 import Count from "./Count";
 import CustomerReview from "./CustomerReview";
 import OurTeam from "./OurTeam";

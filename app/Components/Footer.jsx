@@ -9,7 +9,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="p-10 text-white te lg:px-40 lg:py-20 md:px-20 md:py-10 sm:p-5 bg-primary">
+    <div className="p-10 text-white bg-primary-foreground te lg:px-40 lg:py-20 md:px-20 md:py-10 sm:p-5">
       <div className="flex flex-wrap justify-between space-y-5 lg:space-y-0">
         <div className="flex flex-col space-y-5 lg:w-[40%]">
           <Image src={Logo} alt="logo" width={190} height={50} />
@@ -23,7 +23,7 @@ const Footer = () => {
               placeholder="Enter your email"
               className="w-full pl-4 text-sm text-black border rounded-md outline-none h-11 lg:w-72"
             />
-            <button className="px-4 py-2 text-sm font-semibold transition rounded-md text-primary bg-secondary">
+            <button className="px-4 py-2 text-sm font-semibold text-white transition rounded-md bg-primary">
               Subscribe
             </button>
           </div>

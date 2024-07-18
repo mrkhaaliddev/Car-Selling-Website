@@ -1,15 +1,28 @@
 import React from "react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const ContactHead = () => {
   return (
     <div className="w-full py-10">
-      <div className="mb-6">
-        <a href="/" className="text-primary">
-          Home
-        </a>{" "}
-        / Contact Us
-      </div>
-      <h1 className="mb-4 text-3xl font-bold">Contact Us</h1>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/contactUs">Contact Us</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <h1 className="mt-6 mb-4 text-3xl font-bold">Contact Us</h1>
     </div>
   );
 };

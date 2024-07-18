@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import { ToastContainer } from "react-toastify";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,9 +17,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Toaster position="top-center" />
         <ToastContainer />
         <NextTopLoader
-          color="#007054"
+          color="#DA1F73"
           initialPosition={0.08}
           crawlSpeed={100}
           height={5}

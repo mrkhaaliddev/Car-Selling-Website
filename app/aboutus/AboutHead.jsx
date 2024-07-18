@@ -1,15 +1,29 @@
 import React from "react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 const AboutHead = () => {
   return (
     <div className="w-full px-4 py-10 lg:px-40 md:px-20">
-      <div className="mb-6">
-        <a href="/" className="text-primary">
-          Home
-        </a>{" "}
-        / About Us
-      </div>
-      <h1 className="mb-4 text-3xl font-bold">About Us</h1>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/aboutUs">About Us</BreadcrumbLink>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
+      <h1 className="mt-6 mb-6 text-3xl font-bold">About Us</h1>
       <div className="flex flex-col lg:flex-row lg:space-x-4 lg:pt-5">
         <div className="mb-4 text-[34px] font-bold lg:w-1/2">
           <h2 className="w-[80%] leading-normal">

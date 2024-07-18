@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
-import { Lock, Mail } from "react-feather";
+import React, { useEffect } from "react";
+import { Lock, Mail, User } from "react-feather";
 import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import toast, { Toaster } from "react-hot-toast";
+
+// import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 const SignIn = () => {
   const {
     register,
@@ -18,38 +20,30 @@ const SignIn = () => {
       password: "",
     },
   });
-  // console.log(errors);
 
-  const navigate = useRouter();
+  const router = useRouter();
 
-  //   const { userInfo } = useSelector((state) => state.auth);
-
-  //   const [login, { isLoading, error }] = useLoginMutation();
-
-  //   useEffect(() => {
-  //     if (userInfo) {
-  //       navigate("/");
-  //     } else {
-  //       navigate("/login");
-  //     }
-  //   }, [userInfo, navigate]);
+  const userInfo = localStorage.getItem("userInfo");
+  useEffect(() => {
+    if (userInfo) {
+      router.push("/");
+    } else {
+      router.push("/login");
+    }
+  }, [userInfo, router]);
 
   const submitHandler = async (data) => {
-    console.log("🚀 ~ submitHandler ~ data:", data);
-    // const { email, password } = data;
-    // try {
-    //   const res = await login({ email, password }).unwrap();
-    //   console.log({ ...res });
-    //   dispatch(setCredentials({ ...res }));
-    //   navigate("/dashboard");
-    // } catch (err) {
-    //   console.log(err.data.message);
-    //   toast.error(err.data.message || err.error);
-    // }
+    if (data) {
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      window.location.reload();
+    }
+    router.push("/");
+    toast.success("Login Successful");
   };
 
   return (
     <>
+      <Toaster position="top-center" />
       <div className="flex flex-col items-center mx-auto mt-20 w-96">
         <div className="w-[340px]">
           {" "}
@@ -57,9 +51,6 @@ const SignIn = () => {
             <h1 className="w-full pb-2 text-2xl font-semibold">
               Welcome back!
             </h1>
-            {/* <p className="text-sm font-normal text-slate-400">
-              Start managing your finance faster and better
-            </p> */}
           </div>
           <section>
             <form
@@ -67,6 +58,18 @@ const SignIn = () => {
               onSubmit={handleSubmit(submitHandler)}
               className="flex flex-col gap-y-2"
             >
+              <div className="relative">
+                <User className="absolute bg-white rounded left-2 top-[17px] z-10 w-[16px] h-[16px] text-primary" />
+                <input
+                  className="relative w-full bg-[#F6F7F9]  outline-slate-200 text-sm px-8 py-[12px] rounded-md"
+                  type="text"
+                  {...register("name", {
+                    required: "User name is required",
+                  })}
+                  placeholder="you"
+                />
+                <small className="text-red-500">{errors?.name?.message}</small>
+              </div>
               <div className="relative">
                 <Mail className="absolute bg-white rounded left-2 top-[17px] z-10 w-[16px] h-[16px] text-primary" />
                 <input

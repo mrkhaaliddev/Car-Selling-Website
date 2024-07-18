@@ -185,7 +185,7 @@ const GetInTouch = () => {
             />
           </div>
           <Button type="submit" className="mt-4 text-white btn btn-primary">
-            Submit
+            Send Message
           </Button>
         </form>
       </div>
