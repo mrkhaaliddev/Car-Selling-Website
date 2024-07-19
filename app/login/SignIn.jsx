@@ -36,8 +36,8 @@ const SignIn = () => {
     if (data) {
       localStorage.setItem("userInfo", JSON.stringify(data));
       window.location.reload();
+      router.push("/");
     }
-    router.push("/");
     toast.success("Login Successful");
   };
 

@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import toast from "react-hot-toast";
 
 const schema = yup.object().shape({
   firstName: yup.string().required("First name is required"),
@@ -33,22 +34,28 @@ const GetInTouch = () => {
   const {
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: defaultValues,
   });
 
+  const onsubmit = (data) => {
+    if (data) {
+      reset();
+      toast.success("Thanks for contacting us 🔥");
+    }
+  };
+
   return (
     <div className="w-full mb-20 rounded-lg">
-      <h1 className="mb-2 text-4xl font-semibold">Get In Touch</h1>
+      <h1 className="mb-2 text-2xl font-semibold md:text-3xl lg:text-4xl">
+        Get In Touch
+      </h1>
       <p className="mb-5 text-sm text-gray-600">Fill out the form below.</p>
       <div className="w-full">
-        <form
-          action=""
-          onSubmit={handleSubmit((data) => console.log(data))}
-          noValidate
-        >
+        <form action="" onSubmit={handleSubmit(onsubmit)} noValidate>
           <div className="flex w-full gap-5 mb-5">
             <div className="w-[50%]">
               <label htmlFor="firstName" className="label">

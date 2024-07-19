@@ -23,15 +23,15 @@ const AboutHead = () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <h1 className="mt-6 mb-6 text-3xl font-bold">About Us</h1>
+      <h1 className="mt-6 mb-6 text-2xl font-bold md:text-3xl">About Us</h1>
       <div className="flex flex-col lg:flex-row lg:space-x-4 lg:pt-5">
         <div className="mb-4 text-[34px] font-bold lg:w-1/2">
-          <h2 className="w-[80%] leading-normal">
+          <h2 className="w-[80%] text-2xl md:text-3xl leading-normal">
             We Value Our Clients And Want Them To Have A Nice Experience
           </h2>
         </div>
         <div className="text-sm lg:w-1/2">
-          <p className="mb-4 text-gray-700">
+          <p className="my-4 text-gray-700">
             Lorem ipsum dolor sit amet consectetur. Convallis integer enim eget
             sit urna. Eu duis lectus amet vestibulum varius. Nibh tellus sit sit
             at lorem facilisis. Nunc vulputate ac interdum aliquet vestibulum in

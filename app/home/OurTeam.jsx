@@ -11,14 +11,14 @@ const teamData = [
   {
     name: "Courtney Henry",
     position: "Development Manager",
-    image: Man,
+    image: Man3,
     email: "arlene@boxcars.com",
     phone: "+30 595 59 456",
   },
   {
     name: "Jerome Bell",
     position: "Software Developer",
-    image: Man2,
+    image: Man3,
     email: "bell@boxcars.com",
     phone: "+30 595 59 123",
   },
@@ -32,14 +32,14 @@ const teamData = [
   {
     name: "Arlene McCoy",
     position: "Software Developer",
-    image: Man,
+    image: Man3,
     email: "arlene@boxcars.com",
     phone: "+30 595 59 456",
   },
   {
     name: "Jenny Wilson",
     position: "UI/UX Designer",
-    image: Man2,
+    image: Man3,
     email: "arlene@boxcars.com",
     phone: "+30 595 59 456",
   },
@@ -88,11 +88,11 @@ const Team = () => {
       <Slider {...settings}>
         {teamData.map((member, index) => (
           <div key={index} className="p-2">
-            <div className="relative p-4 bg-white rounded-lg shadow-lg h-[470px] hover-trigger">
+            <div className="relative p-4 bg-none rounded-lg shadow-lg h-[520px] hover-trigger">
               <Image
                 src={member.image}
                 alt={member.name}
-                width={250}
+                width={300}
                 height={220}
                 className="mx-auto rounded-lg"
               />

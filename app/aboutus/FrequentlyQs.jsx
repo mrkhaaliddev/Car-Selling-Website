@@ -9,10 +9,14 @@ import {
 const FrequentlyQs = () => {
   return (
     <div>
-      <h1 className="py-10 text-4xl font-bold text-center">
+      <h1 className="py-10 text-2xl font-bold text-center md:text-3xl lg:text-4xl">
         Frequently Asked Questions
       </h1>
-      <Accordion type="single" collapsible className="w-2/4 pb-16 mx-auto">
+      <Accordion
+        type="single"
+        collapsible
+        className="w-full px-10 pb-16 mx-auto md:w-4/5 lg:w-3/4"
+      >
         <AccordionItem value="item-1">
           <AccordionTrigger>
             Does BoxCar own the cars I see online or are they owned by other.

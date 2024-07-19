@@ -7,11 +7,11 @@ const ContactUs = () => {
   return (
     <>
       <GoogleMap />
-      <div className="flex justify-center w-full space-x-24">
-        <div className="w-[60%]">
+      <div className="justify-center block w-full lg:space-x-24 lg:flex">
+        <div className="w-full lg:w-[60%]">
           <GetInTouch />
         </div>
-        <div className="w-[50%]">
+        <div className="w-full pb-16 lg:w-[50%]">
           <Details />
         </div>
       </div>

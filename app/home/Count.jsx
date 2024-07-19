@@ -33,7 +33,7 @@ const Count = () => {
   }, []);
 
   return (
-    <div className="grid items-center justify-around px-20 py-20 bg-white gap-y-5 lg:gap-2 md:gap-4 md:grid-cols-2 lg:grid-cols-4 md:px-40 lg:px-60 ">
+    <div className="grid items-center justify-around grid-cols-2 px-20 py-20 bg-white gap-y-10 md:gap-y-10 lg:gap-2 md:gap-4 lg:grid-cols-4 md:px-40 lg:px-60 ">
       <div className="text-center">
         <div ref={carsRef} className="text-3xl font-bold"></div>
         <div className="mt-2 text-sm">CARS FOR SALE</div>

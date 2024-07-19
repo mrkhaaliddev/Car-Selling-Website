@@ -22,7 +22,7 @@ const ContactHead = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className="mt-6 mb-4 text-3xl font-bold">Contact Us</h1>
+      <h1 className="mt-6 mb-4 text-2xl font-bold md:text-3xl">Contact Us</h1>
     </div>
   );
 };

@@ -14,7 +14,7 @@ import Image from "next/image";
 import HomeCar from "../././../public/HomePageCar.png";
 import WhatWeHave from "./WhatWeHave";
 import WhyUs from "./WhyUs";
-import CarCard from "../cars/CarCard";
+import CarCard from "../Components/CarCard";
 import Count from "./Count";
 import CustomerReview from "./CustomerReview";
 import OurTeam from "./OurTeam";
@@ -22,12 +22,12 @@ import OurTeam from "./OurTeam";
 const HomePage = () => {
   return (
     <>
-      <div className="w-full px-28 h-[650px] bg-tertiary pt-32 mb-40">
+      <div className="w-full px-5 h-[400px] md:h-[650px] bg-tertiary pt-32 mb-40">
         <div className="flex flex-col items-center h-full gap-6">
-          <p className="font-normal text-md">
+          <p className="font-normal text-center text-md">
             Find cars for sale and for rent near you
           </p>
-          <h1 className="text-3xl font-bold text-center md:text-6xl">
+          <h1 className="text-2xl font-bold text-center md:text-4xl lg:text-5xl">
             Find Your Dream Car
           </h1>
           <div className="flex items-center justify-between mt-3 border-white rounded-full bg-white h-auto md:h-[60px] w-full max-w-[950px] p-2 shadow-lg gap-4 md:gap-0">
@@ -80,7 +80,7 @@ const HomePage = () => {
               <Search className="w-4 h-4 text-white" />
             </div>
           </div>
-          <div className="relative w-[900px] mt-16">
+          <div className="relative hidden md:block md:w-[700px] lg:w-[900px] md:mt-20 lg:mt-16">
             <Image
               src={HomeCar}
               alt="car"
