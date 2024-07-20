@@ -19,10 +19,15 @@ import { Button } from "@/components/ui/button";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  let userInfo = undefined;
 
+  if (typeof window !== undefined) {
+    userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  }
   const LogOutUser = () => {
-    localStorage.removeItem("userInfo");
+    if (typeof window !== undefined) {
+      localStorage.removeItem("userInfo");
+    }
     window.location.reload();
   };
 

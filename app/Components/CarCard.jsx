@@ -59,10 +59,13 @@ const settings = {
   ],
 };
 
+let userInfo = undefined;
+
+if (typeof window !== undefined) {
+  userInfo = localStorage.getItem("userInfo");
+}
 const CarCard = () => {
   const router = useRouter();
-
-  const userInfo = localStorage.getItem("userInfo");
 
   return (
     <div className="px-10 mt-20 mb-20 lg:px-32 md:px-20">

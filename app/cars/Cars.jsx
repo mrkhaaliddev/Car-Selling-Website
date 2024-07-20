@@ -30,11 +30,13 @@ import "slick-carousel/slick/slick-theme.css";
 import { useRouter } from "next/navigation";
 import carData from "../CarsData.json";
 
+let userInfo = undefined;
+
+if (typeof window !== undefined) {
+  userInfo = localStorage.getItem("userInfo");
+}
 const Cars = () => {
   const router = useRouter();
-
-  const userInfo = localStorage.getItem("userInfo");
-
   return (
     <div className="px-10 mt-10 mb-16 lg:px-40 md:px-20">
       <Breadcrumb>

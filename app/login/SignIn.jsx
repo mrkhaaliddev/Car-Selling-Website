@@ -23,7 +23,11 @@ const SignIn = () => {
 
   const router = useRouter();
 
-  const userInfo = localStorage.getItem("userInfo");
+  let userInfo = undefined;
+
+  if (typeof window !== undefined) {
+    userInfo = localStorage.getItem("userInfo");
+  }
   useEffect(() => {
     if (userInfo) {
       router.push("/");
@@ -34,7 +38,9 @@ const SignIn = () => {
 
   const submitHandler = async (data) => {
     if (data) {
-      localStorage.setItem("userInfo", JSON.stringify(data));
+      if (typeof window !== undefined) {
+        localStorage.setItem("userInfo", JSON.stringify(data));
+      }
       window.location.reload();
       router.push("/");
     }
@@ -147,12 +153,12 @@ const SignIn = () => {
             </div>{" "}
           </div>
         </div>
-        <p className="text-[13px] text-slate-400 font-normal mb-10">
-          Don't you have an account?{" "}
+        {/* <p className="text-[13px] text-slate-400 font-normal mb-10">
+          Don&apos;t you have an account?{" "}
           <Link href="/signUp" className="font-semibold text-primary">
             Sign Up
           </Link>{" "}
-        </p>
+        </p> */}
       </div>
     </>
   );
