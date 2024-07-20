@@ -9,7 +9,7 @@ import { FaFacebookSquare } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="p-10 text-white bg-primary-foreground te lg:px-40 lg:py-20 md:px-20 md:py-10 sm:p-5">
+    <div className="p-10 text-black bg-tertiary te lg:px-40 lg:py-20 md:px-20 md:py-10 sm:p-5">
       <div className="flex flex-wrap justify-between space-y-5 lg:space-y-0">
         <div className="flex flex-col space-y-5 lg:w-[40%]">
           <Image src={Logo} alt="logo" width={190} height={50} />
