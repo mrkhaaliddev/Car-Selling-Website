@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Lock, Mail, User } from "react-feather";
+import { Eye, EyeOff, Lock, Mail, User } from "react-feather";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -22,6 +22,7 @@ const SignIn = () => {
 
   const router = useRouter();
   const [userInfo, setUserInfo] = useState(undefined);
+  const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -53,7 +54,7 @@ const SignIn = () => {
     <>
       <Toaster position="top-center" />
       <div className="flex flex-col items-center mx-auto my-40 mt-20 w-96">
-        <div className="w-[500px]">
+        <div className="w-96 md:w-[500px]">
           {" "}
           <div className="mb-5">
             <h1 className="w-full pb-2 text-2xl font-semibold">
@@ -96,9 +97,20 @@ const SignIn = () => {
               </div>
               <div className="relative">
                 <Lock className="absolute left-2 top-[15px] z-10 w-[16px] h-[16px] text-primary" />
+                {hidden ? (
+                  <Eye
+                    onClick={() => setHidden(!hidden)}
+                    className="absolute right-2 top-[15px] cursor-pointer z-10 w-[18px] h-[18px] text-primary"
+                  />
+                ) : (
+                  <EyeOff
+                    onClick={() => setHidden(!hidden)}
+                    className="absolute cursor-pointer right-2 top-[15px] z-10 w-[18px] h-[18px] text-primary"
+                  />
+                )}
                 <input
                   className="relative w-full bg-[#F6F7F9] outline-slate-200 text-sm px-8 py-[12px] rounded-md"
-                  type="password"
+                  type={`${hidden ? "password" : "text"}`}
                   {...register("password", {
                     required: "password is required",
                     minLength: {

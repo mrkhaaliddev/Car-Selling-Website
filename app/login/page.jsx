@@ -3,7 +3,7 @@ import SignIn from "./SignIn";
 
 const page = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <SignIn />
     </div>
   );
