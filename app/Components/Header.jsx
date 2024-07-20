@@ -22,7 +22,7 @@ const Header = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedUserInfo = localStorage.getItem("userInfo");
+      const storedUserInfo = JSON.parse(localStorage.getItem("userInfo"));
       setUserInfo(storedUserInfo);
     }
   }, []);
@@ -100,7 +100,7 @@ const Header = () => {
         </div>
       </header>
       {isMenuOpen && (
-        <div className="relative md:hidden bg-tertiary">
+        <div className="relative bg-white md:hidden">
           <IoMdClose
             size={21}
             onClick={() => setIsMenuOpen(!isMenuOpen)}

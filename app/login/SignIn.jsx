@@ -1,8 +1,8 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
 import { Lock, Mail, User } from "react-feather";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
@@ -52,8 +52,8 @@ const SignIn = () => {
   return (
     <>
       <Toaster position="top-center" />
-      <div className="flex flex-col items-center mx-auto mt-20 w-96">
-        <div className="w-[340px]">
+      <div className="flex flex-col items-center mx-auto my-40 mt-20 w-96">
+        <div className="w-[500px]">
           {" "}
           <div className="mb-5">
             <h1 className="w-full pb-2 text-2xl font-semibold">
@@ -64,7 +64,7 @@ const SignIn = () => {
             <form
               action=""
               onSubmit={handleSubmit(submitHandler)}
-              className="flex flex-col gap-y-2"
+              className="flex flex-col gap-y-3"
             >
               <div className="relative">
                 <User className="absolute bg-white rounded left-2 top-[17px] z-10 w-[16px] h-[16px] text-primary" />
@@ -112,7 +112,7 @@ const SignIn = () => {
                   {errors?.password?.message}
                 </small>
               </div>
-              <Link href="/forgetPassword">
+              <Link href="#">
                 {" "}
                 <p className="text-sm font-semibold text-right text-primary">
                   Forgot password?
@@ -123,12 +123,12 @@ const SignIn = () => {
               </button>
             </form>
           </section>
-          <div className="flex mb-5 gap-x-4">
+          {/* <div className="flex mb-5 gap-x-4">
             <div className="w-40 border-b border-slate-200"></div>
             <p className="pt-5 text-slate-400">or</p>
             <div className="w-40 border-b border-slate-200"></div>
-          </div>
-          <div className="flex gap-x-3 max-w-[340px] mb-5">
+          </div> */}
+          {/* <div className="flex gap-x-3 max-w-[340px] mb-5">
             <div className="relative">
               <Image
                 src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
@@ -153,7 +153,7 @@ const SignIn = () => {
                 Facebook
               </button>
             </div>{" "}
-          </div>
+          </div> */}
         </div>
         {/* <p className="text-[13px] text-slate-400 font-normal mb-10">
           Don&apos;t you have an account?{" "}

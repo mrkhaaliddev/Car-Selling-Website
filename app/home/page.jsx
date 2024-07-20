@@ -3,7 +3,7 @@ import HomePage from "./HomePage";
 
 const page = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <HomePage />
     </div>
   );

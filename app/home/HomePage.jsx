@@ -22,7 +22,7 @@ import OurTeam from "./OurTeam";
 const HomePage = () => {
   return (
     <>
-      <div className="w-full px-5 h-[400px] md:h-[650px] bg-tertiary pt-32 mb-40">
+      <div className="w-full px-3 h-[400px] md:h-[650px] bg-tertiary pt-32 mb-40">
         <div className="flex flex-col items-center h-full gap-6">
           <p className="font-normal text-center text-md">
             Find cars for sale and for rent near you
@@ -32,7 +32,7 @@ const HomePage = () => {
           </h1>
           <div className="flex items-center justify-between mt-3 border-white rounded-full bg-white h-auto md:h-[60px] w-full max-w-[950px] p-2 shadow-lg gap-4 md:gap-0">
             <Select>
-              <SelectTrigger className="w-full ml-3 h-[50px] z-10 border-none rounded-none  outline-none focus:border-none focus:ring-0">
+              <SelectTrigger className="w-full ml-3 h-[50px] z-10 border-none rounded-none outline-none focus:border-none focus:ring-0">
                 <SelectValue placeholder="Any Makes" />
               </SelectTrigger>
               <SelectContent>
