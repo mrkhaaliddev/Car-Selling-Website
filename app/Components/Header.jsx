@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../public/Tayo_cars_Logo.png";
 import { IoMdClose } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -18,17 +18,20 @@ import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState(undefined);
 
-  let userInfo = undefined;
-
-  if (typeof window !== undefined) {
-    userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  }
-  const LogOutUser = () => {
-    if (typeof window !== undefined) {
-      localStorage.removeItem("userInfo");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUserInfo = localStorage.getItem("userInfo");
+      setUserInfo(storedUserInfo);
     }
-    window.location.reload();
+  }, []);
+
+  const LogOutUser = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("userInfo");
+      window.location.reload();
+    }
   };
 
   return (

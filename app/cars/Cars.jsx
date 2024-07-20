@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -13,30 +13,27 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { RxTimer } from "react-icons/rx";
 import { FaGasPump, FaCogs } from "react-icons/fa";
-import {
-  BsArrowLeft,
-  BsArrowRight,
-  BsArrowUpRight,
-  BsBookmark,
-} from "react-icons/bs";
+import { BsBookmark, BsArrowUpRight } from "react-icons/bs";
 import { Button } from "@/components/ui/button";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import carData from "../CarsData.json";
 
-let userInfo = undefined;
-
-if (typeof window !== undefined) {
-  userInfo = localStorage.getItem("userInfo");
-}
 const Cars = () => {
   const router = useRouter();
+  const [userInfo, setUserInfo] = useState(undefined);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUserInfo = localStorage.getItem("userInfo");
+      setUserInfo(storedUserInfo);
+    }
+  }, []);
+
   return (
     <div className="px-10 mt-10 mb-16 lg:px-40 md:px-20">
       <Breadcrumb>
@@ -64,10 +61,12 @@ const Cars = () => {
           >
             <Card className="overflow-hidden bg-white rounded-lg shadow-lg ">
               <CardHeader className="relative p-0">
-                <img
+                <Image
                   className="object-cover w-full h-48 cursor-pointer"
                   src={car.images[0]}
                   alt="Car"
+                  width={500}
+                  height={300}
                 />
                 {car.label && (
                   <div

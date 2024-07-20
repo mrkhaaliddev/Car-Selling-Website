@@ -1,13 +1,12 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Lock, Mail, User } from "react-feather";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 const SignIn = () => {
   const {
     register,
@@ -22,12 +21,15 @@ const SignIn = () => {
   });
 
   const router = useRouter();
+  const [userInfo, setUserInfo] = useState(undefined);
 
-  let userInfo = undefined;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedUserInfo = localStorage.getItem("userInfo");
+      setUserInfo(storedUserInfo);
+    }
+  }, []);
 
-  if (typeof window !== undefined) {
-    userInfo = localStorage.getItem("userInfo");
-  }
   useEffect(() => {
     if (userInfo) {
       router.push("/");
@@ -38,13 +40,13 @@ const SignIn = () => {
 
   const submitHandler = async (data) => {
     if (data) {
-      if (typeof window !== undefined) {
+      if (typeof window !== "undefined") {
         localStorage.setItem("userInfo", JSON.stringify(data));
       }
       window.location.reload();
       router.push("/");
+      toast.success("Login Successful");
     }
-    toast.success("Login Successful");
   };
 
   return (
@@ -96,7 +98,7 @@ const SignIn = () => {
                 <Lock className="absolute left-2 top-[15px] z-10 w-[16px] h-[16px] text-primary" />
                 <input
                   className="relative w-full bg-[#F6F7F9] outline-slate-200 text-sm px-8 py-[12px] rounded-md"
-                  type="text"
+                  type="password"
                   {...register("password", {
                     required: "password is required",
                     minLength: {
@@ -128,10 +130,10 @@ const SignIn = () => {
           </div>
           <div className="flex gap-x-3 max-w-[340px] mb-5">
             <div className="relative">
-              <img
+              <Image
                 src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
                 className="absolute left-8 top-[10px]"
-                alt=""
+                alt="Google"
                 width={16}
                 height={16}
               />
@@ -140,10 +142,10 @@ const SignIn = () => {
               </button>
             </div>{" "}
             <div className="relative">
-              <img
+              <Image
                 src="https://cdn-icons-png.flaticon.com/128/15047/15047435.png"
                 className="absolute left-8 top-[10px]"
-                alt=""
+                alt="Facebook"
                 width={18}
                 height={18}
               />
