@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
 import { BsArrowUpRight } from "react-icons/bs";
 import Link from "next/link";
 import ImageGallery from "./ImageGallery";
-import GoogleMap from "../../contactUs/googleMap";
+import GoogleMap from "../../contactUs/GoogleMap";
 
 const CarDetails = ({ data }) => {
   const CarData = data[0];
