@@ -55,7 +55,7 @@ const CustomerReview = () => {
             What our customers say
           </h2>
           <p className="text-sm text-gray-600">
-            Rated 4.7 / 5 based on 28,370 reviews
+            Rated 4.7 / 5 based on 2,370 reviews
           </p>
         </div>
         <div className="relative flex items-center w-full">

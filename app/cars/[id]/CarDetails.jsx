@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/button";
 import { BsArrowUpRight } from "react-icons/bs";
 import Link from "next/link";
 import ImageGallery from "./ImageGallery";
+import GoogleMap from "../../contactUs/googleMap";
 
 const CarDetails = ({ data }) => {
   const CarData = data[0];
@@ -135,6 +136,13 @@ const CarDetails = ({ data }) => {
             </CardFooter>
           </Card>
         </div>
+      </div>
+
+      {/* Location */}
+      <div className="w-[70%]">
+        <h1 className="pb-5 text-2xl font-semibold">Location</h1>
+        <p className="pb-1 text-sm">{CarData?.location}</p>
+        <GoogleMap />
       </div>
     </div>
   );
