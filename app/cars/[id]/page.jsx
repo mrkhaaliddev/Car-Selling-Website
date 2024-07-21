@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 const page = ({ params }) => {
   const data = carData.filter((car) => car.id == params.id);
   return (
-    <div className="pt-7">
+    <div className="overflow-x-hidden pt-7">
       <CarDetails data={data} />
     </div>
   );

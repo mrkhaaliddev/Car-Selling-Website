@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-// import Man from "../../public/Man.jpg";
 import SideCar from "../../public/AboutUs/SideCar.jpg";
 import StandMan from "../../public/AboutUs/StandMan.jpg";
 import HandShake from "../../public/AboutUs/Handshake.png";
@@ -19,13 +18,11 @@ const GridImages = () => {
             </div>
           </div>
           <div className="w-full">
-            <div className="aspect-w-4 aspect-h-3">
+            <div className="relative aspect-w-4 aspect-h-3 lg:aspect-w-4 lg:aspect-h-3 h-60">
               <Image
                 src={HandShake}
                 alt="Business Image 1"
-                layout="responsive"
-                width={500}
-                height={300}
+                layout="fill"
                 className="object-cover rounded-lg"
               />
             </div>
@@ -33,60 +30,38 @@ const GridImages = () => {
         </div>
 
         {/* Main Image */}
-        <div className="col-span-6 row-span-2 lg:col-span-6 lg:row-span-4">
-          <div className="aspect-w-16 aspect-h-9 lg:aspect-w-16 lg:aspect-h-9">
+        <div className="col-span-1 lg:col-span-6 lg:row-span-4">
+          <div className="relative aspect-w-16 aspect-h-9 lg:aspect-w-16 lg:aspect-h-9 h-[460px]">
             <Image
               src={StandMan}
               alt="Business Image 2"
-              layout="responsive"
-              width={500}
-              height={300}
+              layout="fill"
               className="object-cover rounded-lg"
             />
           </div>
         </div>
 
         {/* Right Images */}
-        <div className="grid grid-cols-2 col-span-3 gap-4 lg:col-span-3 lg:grid-rows-3 lg:gap-4">
-          <div className="aspect-w-4 aspect-h-3">
-            <Image
-              src={GivingKeys}
-              alt="Car Image 1"
-              layout="responsive"
-              width={500}
-              height={300}
-              className="object-cover rounded-lg"
-            />
+        <div className="flex flex-col items-center justify-center col-span-3 gap-4">
+          <div className="w-full">
+            <div className="relative aspect-w-4 aspect-h-3 lg:aspect-w-4 lg:aspect-h-3 h-52">
+              <Image
+                src={GivingKeys}
+                alt="Business Image 1"
+                layout="fill"
+                className="object-cover rounded-lg"
+              />
+            </div>
           </div>
-          <div className="aspect-w-4 aspect-h-3">
-            <Image
-              src={HandShake}
-              alt="Car Image 2"
-              layout="responsive"
-              width={500}
-              height={300}
-              className="object-cover rounded-lg"
-            />
-          </div>
-          <div className="aspect-w-4 aspect-h-3">
-            <Image
-              src={StandMan}
-              alt="Car Image 3"
-              layout="responsive"
-              width={500}
-              height={300}
-              className="object-cover rounded-lg"
-            />
-          </div>
-          <div className="aspect-w-4 aspect-h-3">
-            <Image
-              src={SideCar}
-              alt="Car Image 4"
-              layout="responsive"
-              width={500}
-              height={300}
-              className="object-cover rounded-lg"
-            />
+          <div className="w-full">
+            <div className="relative aspect-w-4 aspect-h-3 lg:aspect-w-4 lg:aspect-h-3 h-60">
+              <Image
+                src={SideCar}
+                alt="Business Image 1"
+                layout="fill"
+                className="object-cover rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </div>

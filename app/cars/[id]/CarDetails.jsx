@@ -55,13 +55,13 @@ const CarDetails = ({ data }) => {
           {CarData?.description}
         </p>
       </div>
-      <div className="flex items-center justify-between mb-5">
-        <div className="flex items-center gap-6 mb-5">
+      <div className="flex flex-col items-center justify-between mb-5 lg:flex-row">
+        <div className="flex flex-wrap items-center gap-4 mb-5 lg:mb-0">
           <span className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-slate-200 text-primary">
             <Calendar className="w-5 h-5" />
             <span className="text-sm">{CarData?.year}</span>
           </span>
-          <span className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-slate-200 text-primary ">
+          <span className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-slate-200 text-primary">
             <Clock className="w-5 h-5" />
             <span className="text-sm">{CarData?.mileage}</span>
           </span>
@@ -75,7 +75,9 @@ const CarDetails = ({ data }) => {
           </span>
         </div>
         <div>
-          <h1 className="mb-4 text-2xl font-semibold">{CarData?.price}</h1>
+          <h1 className="text-xl font-semibold lg:text-2xl">
+            {CarData?.price}
+          </h1>
         </div>
       </div>
 
@@ -83,13 +85,13 @@ const CarDetails = ({ data }) => {
       <ImageGallery images={CarData?.images} />
 
       {/* Description */}
-      <div className="flex justify-between w-full gap-10 my-20">
-        <div className="w-[60%]">
+      <div className="flex flex-col justify-between w-full gap-10 my-20 lg:flex-row">
+        <div className="w-full lg:w-[60%]">
           <h1 className="pb-5 text-xl font-semibold">Description</h1>
           <p className="text-sm leading-loose">{CarData?.mainDescription}</p>
         </div>
-        <div className="w-[40%]">
-          <Card className="ml-[140px] w-[70%]">
+        <div className="w-full lg:w-[40%] flex justify-center lg:justify-end">
+          <Card className="w-full lg:w-[70%]">
             <CardHeader>
               <CardTitle>
                 <Image src={Profile} alt="" width={50} height={50} />
@@ -104,7 +106,7 @@ const CarDetails = ({ data }) => {
             <CardContent>
               <p className="flex items-center gap-2 text-sm">
                 <small className="flex items-center justify-center gap-2 px-2 py-2 rounded-full bg-slate-200 text-primary">
-                  <PhoneCall className="w-5 h-5 rounded-full text-primary" />{" "}
+                  <PhoneCall className="w-5 h-5 rounded-full text-primary" />
                 </small>
                 <span>{CarData.sellerWhatsApp}</span>
               </p>
@@ -115,7 +117,7 @@ const CarDetails = ({ data }) => {
                   href={`https://wa.me/${CarData.sellerWhatsApp}`}
                   target="_blank"
                 >
-                  <Button className="w-full px-[60px] py-6 hover:bg-[#4E6CFB] bg-[#405FF2] text-white border-[#60C961]">
+                  <Button className="w-full px-4 py-3 lg:px-[60px] lg:py-6 hover:bg-[#4E6CFB] bg-[#405FF2] text-white border-[#60C961]">
                     Message Dealer
                     <BsArrowUpRight className="w-5 h-5 ml-3" />
                   </Button>
@@ -126,7 +128,7 @@ const CarDetails = ({ data }) => {
                 >
                   <Button
                     variant="outline"
-                    className="w-full px-[60px] py-6 hover:bg-[#60C961] text-[#60C961] hover:text-white border-[#60C961]"
+                    className="w-full px-4 py-3 lg:px-[60px] lg:py-6 hover:bg-[#60C961] text-[#60C961] hover:text-white border-[#60C961]"
                   >
                     Chat Via WhatsApp
                     <BsArrowUpRight className="w-5 h-5 ml-3" />
