@@ -15,7 +15,6 @@ import { Button } from "@/components/ui/button";
 import Slider from "react-slick";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import carData from "../CarsData.json";
 
 const settings = {
   dots: true,
@@ -53,7 +52,7 @@ const settings = {
   ],
 };
 
-const CarCard = () => {
+const CarCard = ({ carData }) => {
   const router = useRouter();
   const [userInfo, setUserInfo] = useState(undefined);
 
