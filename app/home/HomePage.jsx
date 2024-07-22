@@ -19,35 +19,59 @@ import Count from "./Count";
 import CustomerReview from "./CustomerReview";
 import OurTeam from "./OurTeam";
 import carData from "../CarsData.json";
+import { set } from "react-hook-form";
 
 const HomePage = () => {
   // State
-  const [selectedMake, setSelectedMake] = useState("");
+  const [filteredCars, setFilteredCars] = useState(carData);
+  const [selectedName, setSelectedName] = useState("");
   const [selectedModel, setSelectedModel] = useState("");
   const [selectedPrice, setSelectedPrice] = useState("");
 
-  const handleMakeChange = (value) => setSelectedMake(value);
+  const handleNameChange = (value) => setSelectedName(value);
   const handleModelChange = (value) => setSelectedModel(value);
   const handlePriceChange = (value) => setSelectedPrice(value);
 
   const handleSearchClick = () => {
     const searchParams = {
-      make: selectedMake,
+      name: selectedName,
       model: selectedModel,
       price: selectedPrice,
     };
 
-    const filteredCars = carData.filter((car) => {
-      return (
-        (searchParams.make === "" || car.make === searchParams.make) &&
-        (searchParams.model === "" || car.model === searchParams.model) &&
-        (searchParams.price === "" || car.price === searchParams.price)
-      );
+    const filteredCar = carData.filter((car) => {
+      const matchesName =
+        searchParams.name === "" || car.name === searchParams.name;
+      const matchesModel =
+        searchParams.model === "" || car.model === searchParams.model;
+      const matchesPrice =
+        searchParams.price === "" ||
+        (searchParams.price === "under-20k" && car.price < 20000) ||
+        (searchParams.price === "20k-50k" &&
+          car.price >= 20000 &&
+          car.price <= 50000) ||
+        (searchParams.price === "50k-100k" &&
+          car.price >= 50000 &&
+          car.price <= 100000) ||
+        (searchParams.price === "over-100k" && car.price > 100000);
+
+      console.log({
+        carName: car.name,
+        carModel: car.model,
+        carPrice: car.price,
+        matchesName,
+        matchesModel,
+        matchesPrice,
+      });
+
+      return matchesName || matchesModel || matchesPrice;
     });
 
-    console.log(filteredCars);
-    console.log("🚀 ~ handleSearchClick ~ carData:", carData);
+    setFilteredCars(filteredCar);
   };
+
+  // unique car names
+  const uniqueCarNames = Array.from(new Set(carData.map((car) => car.name)));
 
   return (
     <>
@@ -62,18 +86,18 @@ const HomePage = () => {
 
           {/* Filtering Things */}
           <div className="flex items-center justify-between mt-3 border-white rounded-full bg-white h-auto md:h-[60px] w-full max-w-[950px] p-2 shadow-lg gap-4 md:gap-0">
-            <Select onValueChange={handleMakeChange}>
+            <Select onValueChange={handleNameChange}>
               <SelectTrigger className="w-full ml-3 h-[50px] z-10 border-none rounded-none outline-none focus:border-none focus:ring-0">
-                <SelectValue placeholder="Any Makes" />
+                <SelectValue placeholder="Any Brands" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>Brands</SelectLabel>
-                  {/* <SelectItem value="any">Any Brand</SelectItem> */}
-                  <SelectItem value="audi">Audi</SelectItem>
-                  <SelectItem value="bmw">BMW</SelectItem>
-                  <SelectItem value="mercedes">Mercedes</SelectItem>
-                  <SelectItem value="toyota">Toyota</SelectItem>
+                  {uniqueCarNames.map((name, index) => (
+                    <SelectItem key={index} value={name}>
+                      {name}
+                    </SelectItem>
+                  ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -84,11 +108,13 @@ const HomePage = () => {
               <SelectContent>
                 <SelectGroup>
                   <SelectLabel>Models</SelectLabel>
-                  <SelectItem value="any">Any Models</SelectItem>
-                  <SelectItem value="model-s">Model S</SelectItem>
-                  <SelectItem value="model-3">Model 3</SelectItem>
-                  <SelectItem value="model-x">Model X</SelectItem>
-                  <SelectItem value="model-y">Model Y</SelectItem>
+                  {carData
+                    .filter((car) => car.name === selectedName)
+                    .map((car) => (
+                      <SelectItem key={car.id} value={car.model}>
+                        {car.model}
+                      </SelectItem>
+                    ))}
                 </SelectGroup>
               </SelectContent>
             </Select>
@@ -128,7 +154,7 @@ const HomePage = () => {
         </div>
       </div>
       <WhatWeHave />
-      <CarCard carData={carData} />
+      <CarCard carData={filteredCars} />
       <WhyUs />
       <hr />
       <Count />

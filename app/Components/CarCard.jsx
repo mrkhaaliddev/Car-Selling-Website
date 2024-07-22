@@ -53,6 +53,7 @@ const settings = {
 };
 
 const CarCard = ({ carData }) => {
+  console.log("carData", carData);
   const router = useRouter();
   const [userInfo, setUserInfo] = useState(undefined);
 
@@ -66,7 +67,7 @@ const CarCard = ({ carData }) => {
   return (
     <div className="px-10 mt-20 mb-20 lg:px-32 md:px-20">
       <h1 className="pb-20 text-4xl font-bold text-center text-black ">
-        The Most Searched Cars
+        Your Filtered Cars 🔥
       </h1>
       <Slider {...settings}>
         {carData.map((car, index) => (
