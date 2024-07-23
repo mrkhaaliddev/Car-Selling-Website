@@ -82,8 +82,14 @@ const Header = () => {
           </button>
           {userInfo ? (
             <div className="flex items-center space-x-4">
-              <Button className="text-sm rounded-full cursor-pointer">
+              <Button
+                onClick={() => console.log("bookmark clicked")}
+                className="relative flex items-center justify-center w-10 h-10 p-0 text-sm rounded-full cursor-pointer"
+              >
                 <BsBookmark className="w-5 h-5 text-white" />
+                <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full">
+                  0
+                </span>
               </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger className="border-none outline-none cursor-pointer">
