@@ -55,14 +55,14 @@ const HomePage = () => {
           car.price <= 100000) ||
         (searchParams.price === "over-100k" && car.price > 100000);
 
-      console.log({
-        carName: car.name,
-        carModel: car.model,
-        carPrice: car.price,
-        matchesName,
-        matchesModel,
-        matchesPrice,
-      });
+      // console.log({
+      //   carName: car.name,
+      //   carModel: car.model,
+      //   carPrice: car.price,
+      //   matchesName,
+      //   matchesModel,
+      //   matchesPrice,
+      // });
 
       return matchesName || matchesModel || matchesPrice;
     });

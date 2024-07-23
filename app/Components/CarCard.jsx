@@ -53,7 +53,6 @@ const settings = {
 };
 
 const CarCard = ({ carData }) => {
-  console.log("carData", carData);
   const router = useRouter();
   const [userInfo, setUserInfo] = useState(undefined);
 

@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,17 +17,30 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Profile from "../../../public/user.png";
-import { Calendar, Clock, Command, PhoneCall } from "react-feather";
-import { FuelIcon, Phone } from "lucide-react";
+import {
+  Award,
+  Calendar,
+  Clock,
+  Command,
+  PhoneCall,
+  Target,
+} from "react-feather";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { FaGasPump, FaCogs, FaMoneyBillAlt } from "react-icons/fa";
+import { FuelIcon, PaintBucket, Phone } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { BsArrowUpRight } from "react-icons/bs";
+import { BsArrowUpRight, BsCheckCircle } from "react-icons/bs";
 import Link from "next/link";
 import ImageGallery from "./ImageGallery";
 import GoogleMap from "../../contactUs/GoogleMap";
 
-const CarDetails = ({ data }) => {
+const CarDetails = ({ data = [{}] }) => {
+  // state
+  const [purchased, setPurchased] = useState(false);
+
   const CarData = data[0];
+
   return (
     <div className="px-10 lg:px-40 md:px-20">
       {/* Breadcrumb */}
@@ -66,7 +80,7 @@ const CarDetails = ({ data }) => {
             <span className="text-sm">{CarData?.mileage}</span>
           </span>
           <span className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-slate-200 text-primary">
-            <Command className="w-5 h-5" />
+            <FaCogs className="w-5 h-5" />
             <span className="text-sm">{CarData?.transmission}</span>
           </span>
           <span className="flex items-center justify-center gap-2 px-5 py-2 rounded-full bg-slate-200 text-primary">
@@ -84,23 +98,82 @@ const CarDetails = ({ data }) => {
       {/* Image Gallery */}
       <ImageGallery images={CarData?.images} />
 
-      {/* Description */}
-      <div className="flex flex-col justify-between w-full gap-10 my-20 lg:flex-row">
+      {/* Car Details */}
+      <div className="flex flex-col justify-between w-full gap-10 mt-20 mb-10 lg:flex-row">
         <div className="w-full lg:w-[60%]">
-          <h1 className="pb-5 text-xl font-semibold">Description</h1>
-          <p className="text-sm leading-loose">{CarData?.mainDescription}</p>
+          <h1 className="pb-8 text-2xl font-bold md:text-3xl">Car Details</h1>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="flex items-center">
+              <span className="flex items-center text-sm font-semibold gap-x-2">
+                <Target className="w-5 h-5 text-primary" />
+                Brand
+              </span>
+            </div>
+            <span className="text-sm">{CarData?.name}</span>
+
+            <div className="flex items-center">
+              <span className="flex items-center text-sm font-semibold gap-x-2">
+                <Clock className="w-5 h-5 text-primary" />
+                Mileage
+              </span>
+            </div>
+            <span className="text-sm">{CarData?.mileage}</span>
+
+            <div className="flex items-center">
+              <span className="flex items-center text-sm font-semibold gap-x-2">
+                <FuelIcon className="w-5 h-5 text-primary" />
+                Fuel Type
+              </span>
+            </div>
+            <span className="text-sm">{CarData?.fuel}</span>
+
+            <div className="flex items-center">
+              <span className="flex items-center text-sm font-semibold gap-x-2">
+                <Calendar className="w-5 h-5 text-primary" />
+                Year
+              </span>
+            </div>
+            <span className="text-sm">{CarData?.year}</span>
+
+            <div className="flex items-center">
+              <span className="flex items-center text-sm font-semibold gap-x-2">
+                <PaintBucket className="w-5 h-5 text-primary" />
+                Color
+              </span>
+            </div>
+            <span className="text-sm">{CarData?.color}</span>
+
+            <div className="flex items-center">
+              <span className="flex items-center text-sm font-semibold gap-x-2">
+                <FaCogs className="w-5 h-5 text-primary" />
+                Transmission
+              </span>
+            </div>
+            <span className="text-sm">{CarData?.transmission}</span>
+
+            <div className="flex items-center">
+              <span className="flex items-center text-sm font-semibold gap-x-2">
+                <FaMoneyBillAlt className="w-5 h-5 text-primary" />
+                Price
+              </span>
+            </div>
+            <span className="text-sm">{CarData?.price}</span>
+          </div>
         </div>
-        <div className="w-full lg:w-[40%] flex justify-center lg:justify-end">
+        <div className="w-full pt-10 lg:w-[40%] flex justify-center lg:justify-end">
           <Card className="w-full lg:w-[70%]">
             <CardHeader>
               <CardTitle>
-                <Image src={Profile} alt="" width={50} height={50} />
+                <Avatar>
+                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>{" "}
               </CardTitle>
               <h1 className="pt-1 text-lg font-semibold">
                 {CarData.sellerName}
               </h1>
               <CardDescription>
-                <p className="text-sm">{CarData?.location}</p>
+                <small className="text-sm">{CarData?.location}</small>
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -113,15 +186,24 @@ const CarDetails = ({ data }) => {
             </CardContent>
             <CardFooter>
               <div className="flex flex-col gap-y-4">
-                <Link
-                  href={`https://wa.me/${CarData.sellerWhatsApp}`}
-                  target="_blank"
+                <Button
+                  onClick={() => setPurchased(true)}
+                  className={`w-full px-4 py-3 lg:px-[60px] lg:py-6 ${
+                    purchased ? "bg-[#60C961]" : "bg-[#405FF2]"
+                  } text-white border-[#60C961]`}
                 >
-                  <Button className="w-full px-4 py-3 lg:px-[60px] lg:py-6 hover:bg-[#4E6CFB] bg-[#405FF2] text-white border-[#60C961]">
-                    Message Dealer
-                    <BsArrowUpRight className="w-5 h-5 ml-3" />
-                  </Button>
-                </Link>
+                  {purchased ? (
+                    <>
+                      <BsCheckCircle className="w-5 h-5 mr-3" />
+                      Purchased
+                    </>
+                  ) : (
+                    <>
+                      <BsArrowUpRight className="w-5 h-5 mr-3" />
+                      Purchase Here
+                    </>
+                  )}
+                </Button>
                 <Link
                   href={`https://wa.me/${CarData.sellerWhatsApp}`}
                   target="_blank"
@@ -140,22 +222,20 @@ const CarDetails = ({ data }) => {
         </div>
       </div>
 
+      {/* description */}
+      <div className="w-full lg:w-[60%] mb-20">
+        <h1 className="pb-5 text-2xl font-semibold">Description</h1>
+        <p className="text-sm leading-loose">{CarData?.mainDescription}</p>
+      </div>
+
       {/* Location */}
-      <div className="w-[70%]">
+      <div className="w-full lg:w-[70%]">
         <h1 className="pb-5 text-2xl font-semibold">Location</h1>
         <p className="pb-1 text-sm">{CarData?.location}</p>
         <GoogleMap />
       </div>
     </div>
   );
-};
-
-CarDetails.prototype = {
-  data: Object,
-};
-
-CarDetails.defaultProps = {
-  data: {},
 };
 
 export default CarDetails;

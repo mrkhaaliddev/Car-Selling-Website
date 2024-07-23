@@ -11,7 +11,6 @@ const SignIn = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -21,7 +20,7 @@ const SignIn = () => {
   });
 
   const router = useRouter();
-  const [userInfo, setUserInfo] = useState(undefined);
+  const [userInfo, setUserInfo] = useState(null); // Changed from undefined to null
   const [hidden, setHidden] = useState(true);
 
   useEffect(() => {
@@ -40,14 +39,11 @@ const SignIn = () => {
   }, [userInfo, router]);
 
   const submitHandler = async (data) => {
-    if (data) {
-      if (typeof window !== "undefined") {
-        localStorage.setItem("userInfo", JSON.stringify(data));
-      }
-      window.location.reload();
-      router.push("/");
-      toast.success("Login Successful");
+    if (typeof window !== "undefined") {
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      setUserInfo(data); // Update the userInfo state after setting it in localStorage
     }
+    toast.success("Login Successful");
   };
 
   return (
@@ -55,7 +51,6 @@ const SignIn = () => {
       <Toaster position="top-center" />
       <div className="flex flex-col items-center mx-auto my-40 mt-20 w-96">
         <div className="w-96 md:w-[500px]">
-          {" "}
           <div className="mb-5">
             <h1 className="w-full pb-2 text-2xl font-semibold">
               Welcome back!
@@ -63,7 +58,6 @@ const SignIn = () => {
           </div>
           <section>
             <form
-              action=""
               onSubmit={handleSubmit(submitHandler)}
               className="flex flex-col gap-y-3"
             >
@@ -77,7 +71,9 @@ const SignIn = () => {
                   })}
                   placeholder="you"
                 />
-                <small className="text-red-500">{errors?.name?.message}</small>
+                {errors.name && (
+                  <small className="text-red-500">{errors.name.message}</small>
+                )}
               </div>
               <div className="relative">
                 <Mail className="absolute bg-white rounded left-2 top-[17px] z-10 w-[16px] h-[16px] text-primary" />
@@ -91,9 +87,11 @@ const SignIn = () => {
                       message: "Please enter a valid email",
                     },
                   })}
-                  placeholder="you@exmaple.com"
+                  placeholder="you@example.com"
                 />
-                <small className="text-red-500">{errors?.email?.message}</small>
+                {errors.email && (
+                  <small className="text-red-500">{errors.email.message}</small>
+                )}
               </div>
               <div className="relative">
                 <Lock className="absolute left-2 top-[15px] z-10 w-[16px] h-[16px] text-primary" />
@@ -110,22 +108,23 @@ const SignIn = () => {
                 )}
                 <input
                   className="relative w-full bg-[#F6F7F9] outline-slate-200 text-sm px-8 py-[12px] rounded-md"
-                  type={`${hidden ? "password" : "text"}`}
+                  type={hidden ? "password" : "text"}
                   {...register("password", {
-                    required: "password is required",
+                    required: "Password is required",
                     minLength: {
                       value: 8,
-                      message: "minLength must be 8",
+                      message: "Password must be at least 8 characters",
                     },
                   })}
                   placeholder="At least 8 characters"
                 />
-                <small className="text-red-500">
-                  {errors?.password?.message}
-                </small>
+                {errors.password && (
+                  <small className="text-red-500">
+                    {errors.password.message}
+                  </small>
+                )}
               </div>
               <Link href="#">
-                {" "}
                 <p className="text-sm font-semibold text-right text-primary">
                   Forgot password?
                 </p>
@@ -135,12 +134,23 @@ const SignIn = () => {
               </button>
             </form>
           </section>
-          {/* <div className="flex mb-5 gap-x-4">
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default SignIn;
+
+{
+  /* <div className="flex mb-5 gap-x-4">
             <div className="w-40 border-b border-slate-200"></div>
             <p className="pt-5 text-slate-400">or</p>
             <div className="w-40 border-b border-slate-200"></div>
-          </div> */}
-          {/* <div className="flex gap-x-3 max-w-[340px] mb-5">
+          </div> */
+}
+{
+  /* <div className="flex gap-x-3 max-w-[340px] mb-5">
             <div className="relative">
               <Image
                 src="https://cdn-icons-png.flaticon.com/128/300/300221.png"
@@ -165,17 +175,13 @@ const SignIn = () => {
                 Facebook
               </button>
             </div>{" "}
-          </div> */}
-        </div>
-        {/* <p className="text-[13px] text-slate-400 font-normal mb-10">
+          </div> */
+}
+{
+  /* <p className="text-[13px] text-slate-400 font-normal mb-10">
           Don&apos;t you have an account?{" "}
           <Link href="/signUp" className="font-semibold text-primary">
             Sign Up
           </Link>{" "}
-        </p> */}
-      </div>
-    </>
-  );
-};
-
-export default SignIn;
+        </p> */
+}

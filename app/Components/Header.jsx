@@ -15,6 +15,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { BsBookmark } from "react-icons/bs";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import Profile from "./Profile";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,21 +82,55 @@ const Header = () => {
           </button>
           {userInfo ? (
             <div className="flex items-center space-x-4">
-              <p className="cursor-pointer hover:text-primary">
-                {userInfo.name}
-              </p>
+              <Button className="text-sm rounded-full cursor-pointer">
+                <BsBookmark className="w-5 h-5 text-white" />
+              </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger className="border-none outline-none cursor-pointer">
-                  <Image src={User} width={43} alt="user" height={43} />
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     onClick={LogOutUser}
-                    className="cursor-pointer"
+                    className="mb-2 cursor-pointer"
                   >
-                    LogOut
+                    Logout
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="cursor-pointer " asChild>
+                    <Dialog>
+                      <DialogTrigger asChild className="w-full cursor-pointer">
+                        <span className="w-full py-2 pl-2 pr-20 mb-5 text-sm cursor-pointer hover:bg-[#f1f5f9]">
+                          Profile
+                        </span>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[400px] md:max-w-[600px] p-10">
+                        <DialogHeader>
+                          <DialogTitle className="mx-auto mb-7">
+                            <Avatar className="w-16 h-16">
+                              <AvatarImage
+                                src="https://github.com/shadcn.png"
+                                className="w-16 h-16"
+                              />
+                              <AvatarFallback className="w-16 h-16 text-lg">
+                                CN
+                              </AvatarFallback>
+                            </Avatar>
+                            <span className="text-sm ">{userInfo.name}</span>
+                          </DialogTitle>
+                          <DialogDescription className="flex flex-col space-y-3">
+                            <Profile />
+                          </DialogDescription>
+                        </DialogHeader>
+                      </DialogContent>
+                    </Dialog>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="mb-2 cursor-pointer">
+                    Favorites
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

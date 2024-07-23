@@ -9,7 +9,7 @@ const GoogleMap = () => {
         height="450"
         className="border-0 outline-none rounded-xl"
         // style="border:0;"
-        allowFullscreen=""
+        allowFullScreen=""
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
