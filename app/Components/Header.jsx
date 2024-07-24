@@ -93,9 +93,14 @@ const Header = () => {
               </Button>
               <DropdownMenu>
                 <DropdownMenuTrigger className="border-none outline-none cursor-pointer">
-                  <Avatar>
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>CN</AvatarFallback>
+                  <Avatar className="w-12 h-12">
+                    <AvatarImage
+                      src="https://github.com/shadcn.png"
+                      className="w-12 h-12"
+                    />
+                    <AvatarFallback className="w-12 h-12 text-lg">
+                      CN
+                    </AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
@@ -107,7 +112,7 @@ const Header = () => {
                   >
                     Logout
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer " asChild>
+                  <DropdownMenuItem className="cursor-pointer" asChild>
                     <Dialog>
                       <DialogTrigger asChild className="w-full cursor-pointer">
                         <span className="w-full py-2 pl-2 pr-20 mb-5 text-sm cursor-pointer hover:bg-[#f1f5f9]">
@@ -135,7 +140,7 @@ const Header = () => {
                       </DialogContent>
                     </Dialog>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="mb-2 cursor-pointer">
+                  <DropdownMenuItem className="mt-2 cursor-pointer">
                     Favorites
                   </DropdownMenuItem>
                 </DropdownMenuContent>
