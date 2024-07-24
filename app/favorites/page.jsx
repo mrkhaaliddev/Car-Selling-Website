@@ -28,6 +28,7 @@ import Image from "next/image";
 const FavoritePage = () => {
   //state
   const [userInfo, setUserInfo] = useState(null);
+  const router = useRouter();
 
   const {
     favoriteCars,
