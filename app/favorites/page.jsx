@@ -39,6 +39,14 @@ const FavoritePage = () => {
     countFavorite,
   } = useFavorites();
 
+  const handleFavoriteToggle = (car) => {
+    if (isFavorite(car.id)) {
+      removeFavoriteCars(car?.id);
+    } else {
+      addFavoriteCars(car);
+    }
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedUserInfo = localStorage.getItem("userInfo");

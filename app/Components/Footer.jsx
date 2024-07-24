@@ -6,6 +6,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { HiOutlineMail } from "react-icons/hi";
 import { FaTwitterSquare } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -61,7 +62,9 @@ const Footer = () => {
         <div className="flex flex-col items-center space-y-2 md:flex-row md:justify-between">
           <p>
             © 2024 Tayo. All rights reserved. Developed by{" "}
-            <strong>Khaalid</strong>
+            <Link href="#" className="hover:underline">
+              <strong>Group E</strong>
+            </Link>
           </p>
           <p className="flex space-x-2">
             <a href="#" className="hover:underline">

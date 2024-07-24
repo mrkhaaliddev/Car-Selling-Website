@@ -1,7 +1,13 @@
 import React from "react";
-import Man from "../../public/Man.jpg";
-import Man2 from "../../public/Man2.jpg";
 import Man3 from "../../public/Man3.jpg";
+import Khaalid from "../../public/OurTeam/Khaalid.png";
+import Lahube from "../../public/OurTeam/Lahube.jpg";
+import Abdinour from "../../public/OurTeam/Abdinour.jpg";
+import Abdiwali from "../../public/OurTeam/Abdiwali.jpg";
+import Libaan from "../../public/OurTeam/Libaan.jpg";
+import Afrah from "../../public/OurTeam/Afrah.jpg";
+import Maria from "../../public/OurTeam/Maria.jpg";
+import Xudeefi from "../../public/OurTeam/Xudeefi.jpg";
 import Image from "next/image";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -9,38 +15,59 @@ import "slick-carousel/slick/slick-theme.css";
 
 const teamData = [
   {
-    name: "Courtney Henry",
-    position: "Development Manager",
-    image: Man3,
-    email: "arlene@boxcars.com",
+    name: "Abdinour",
+    position: "Software Developer",
+    image: Abdinour,
+    email: "Abdinour12@gmail.com",
     phone: "+30 595 59 456",
   },
   {
-    name: "Jerome Bell",
+    name: "Lahube",
     position: "Software Developer",
-    image: Man3,
-    email: "bell@boxcars.com",
+    image: Lahube,
+    email: "lahube@gmail.com",
     phone: "+30 595 59 123",
   },
   {
-    name: "Khaalid Abdirahim",
-    position: "Software Tester",
-    image: Man3,
+    name: "Mr Khaalid",
+    position: "Development Manager",
+    image: Khaalid,
     email: "khaalidyare344@gmail.com",
     phone: "+252 611008043",
   },
   {
-    name: "Arlene McCoy",
+    name: "Maria",
     position: "Software Developer",
-    image: Man3,
-    email: "arlene@boxcars.com",
+    image: Maria,
+    email: "Maria@gmail.com",
     phone: "+30 595 59 456",
   },
   {
-    name: "Jenny Wilson",
+    name: "Abdiwali",
     position: "UI/UX Designer",
-    image: Man3,
-    email: "arlene@boxcars.com",
+    image: Abdiwali,
+    email: "Abdiwali@gmail.com",
+    phone: "+30 595 59 456",
+  },
+  {
+    name: "Libaan",
+    position: "UI/UX Designer",
+    image: Libaan,
+    email: "Libaan@gmail.com",
+    phone: "+30 595 59 456",
+  },
+  {
+    name: "Afrah",
+    position: "UI/UX Designer",
+    image: Afrah,
+    email: "Afrah@gmail.com",
+    phone: "+30 595 59 456",
+  },
+  {
+    name: "Xudeefi",
+    position: "Software Developer",
+    image: Xudeefi,
+    email: "Xudeefi@gmail.com",
     phone: "+30 595 59 456",
   },
 ];
@@ -93,8 +120,8 @@ const Team = () => {
                 src={member.image}
                 alt={member.name}
                 width={300}
-                height={220}
-                className="mx-auto rounded-lg"
+                height={700}
+                className="mx-auto rounded-lg object-cover w-[300px] h-[400px]"
               />
               <h2 className="mt-4 text-xl font-bold text-center">
                 {member.name}
