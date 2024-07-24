@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import Slider from "react-slick";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useFavorites } from "../Context/FavoritesContext";
 
 const settings = {
   dots: true,
@@ -55,6 +56,23 @@ const settings = {
 const CarCard = ({ carData }) => {
   const router = useRouter();
   const [userInfo, setUserInfo] = useState(undefined);
+
+  const {
+    favoriteCars,
+    setFavoriteCars,
+    addFavoriteCars,
+    removeFavoriteCars,
+    isFavorite,
+    countFavorite,
+  } = useFavorites();
+
+  const handleFavoriteToggle = (car) => {
+    if (isFavorite(car.id)) {
+      removeFavoriteCars(car?.id);
+    } else {
+      addFavoriteCars(car);
+    }
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -99,7 +117,15 @@ const CarCard = ({ carData }) => {
                     {car.label}
                   </div>
                 )}
-                <div className="absolute p-2 text-gray-500 bg-white rounded-full shadow top-2 right-2">
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFavoriteToggle(car);
+                  }}
+                  className={`absolute p-2 text-gray-500 ${
+                    isFavorite(car.id) ? "bg-primary text-white" : "bg-white"
+                  } rounded-full shadow cursor-pointer top-2 right-2`}
+                >
                   <BsBookmark className="w-4 h-4" />
                 </div>
               </CardHeader>

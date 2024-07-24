@@ -26,10 +26,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Profile from "./Profile";
+import { useFavorites } from "../Context/FavoritesContext";
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [userInfo, setUserInfo] = useState(undefined);
+
+  // context for favorite
+  const { countFavorite } = useFavorites();
+  const navigate = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -83,12 +89,12 @@ const Header = () => {
           {userInfo ? (
             <div className="flex items-center space-x-4">
               <Button
-                onClick={() => console.log("bookmark clicked")}
+                onClick={() => navigate.push("/favorites")}
                 className="relative flex items-center justify-center w-10 h-10 p-0 text-sm rounded-full cursor-pointer"
               >
                 <BsBookmark className="w-5 h-5 text-white" />
                 <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-600 rounded-full">
-                  0
+                  {countFavorite()}
                 </span>
               </Button>
               <DropdownMenu>
@@ -140,7 +146,10 @@ const Header = () => {
                       </DialogContent>
                     </Dialog>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="mt-2 cursor-pointer">
+                  <DropdownMenuItem
+                    onClick={() => navigate.push("/favorites")}
+                    className="mt-2 cursor-pointer"
+                  >
                     Favorites
                   </DropdownMenuItem>
                 </DropdownMenuContent>

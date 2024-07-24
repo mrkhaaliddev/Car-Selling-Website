@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import { ToastContainer } from "react-toastify";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
+import FavoritesProvider from "./Context/FavoritesProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,9 +35,11 @@ export default function RootLayout({ children }) {
           zIndex={1600}
           showAtBottom={false}
         />
-        <Header />
-        {children}
-        <Footer />
+        <FavoritesProvider>
+          <Header />
+          {children}
+          <Footer />
+        </FavoritesProvider>
       </body>
     </html>
   );
