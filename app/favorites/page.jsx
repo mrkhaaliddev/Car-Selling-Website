@@ -62,7 +62,7 @@ const FavoritePage = () => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href="/cars">Favorite Cars</BreadcrumbLink>
+            <BreadcrumbLink href="/favorites">Favorite Cars</BreadcrumbLink>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>

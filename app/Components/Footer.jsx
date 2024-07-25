@@ -13,7 +13,7 @@ const Footer = () => {
     <div className="p-10 text-black bg-tertiary te lg:px-40 lg:py-20 md:px-20 md:py-10 sm:p-5">
       <div className="flex flex-wrap justify-between space-y-5 lg:space-y-0">
         <div className="flex flex-col space-y-5 lg:w-[40%]">
-          <Image src={Logo} alt="logo" width={190} height={50} />
+          <h1 className="text-2xl font-semibold ">Logo</h1>
           <p className="leading-loose lg:w-80">
             Our Latest news, articles, and resources we will send to your inbox
             weekly.
@@ -48,7 +48,7 @@ const Footer = () => {
           </p>
           <p className="flex items-center gap-2 ">
             <HiOutlineMail size={20} />
-            cars@tayo.com
+            cars@gmail.com
           </p>
           <p className="flex items-center gap-2 ">
             <CiLocationOn size={20} />
@@ -62,8 +62,11 @@ const Footer = () => {
         <div className="flex flex-col items-center space-y-2 md:flex-row md:justify-between">
           <p>
             © 2024 Tayo. All rights reserved. Developed by{" "}
-            <Link href="#" className="hover:underline">
-              <strong>Group E</strong>
+            <Link
+              href="https://github.com/khaalid-yare"
+              className="hover:underline"
+            >
+              <strong>Mr Khaalid</strong>
             </Link>
           </p>
           <p className="flex space-x-2">

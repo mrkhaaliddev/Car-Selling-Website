@@ -55,13 +55,7 @@ const Header = () => {
     <div>
       <header className="sticky flex items-center justify-between py-5 sm:px-5 md:px-20 lg:px-32 text-textPrimary">
         <Link href="/home">
-          <Image
-            src={Logo}
-            alt="logo"
-            width={150}
-            height={40}
-            className="p-0 mr-4 cursor-pointer"
-          />
+          <h1 className="text-2xl font-semibold">Logo</h1>
         </Link>
         <nav className="hidden md:flex">
           <ul className="flex visible space-x-6">

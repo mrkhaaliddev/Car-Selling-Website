@@ -17,7 +17,6 @@ import WhyUs from "./WhyUs";
 import CarCard from "../Components/CarCard";
 import Count from "./Count";
 import CustomerReview from "./CustomerReview";
-import OurTeam from "./OurTeam";
 import carData from "../CarsData.json";
 import { set } from "react-hook-form";
 
@@ -159,7 +158,6 @@ const HomePage = () => {
       <hr />
       <Count />
       <hr />
-      <OurTeam />
       <CustomerReview />
     </>
   );

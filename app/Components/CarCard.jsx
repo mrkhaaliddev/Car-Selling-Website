@@ -13,6 +13,8 @@ import { FaGasPump, FaCogs } from "react-icons/fa";
 import { BsBookmark, BsArrowUpRight } from "react-icons/bs";
 import { Button } from "@/components/ui/button";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useFavorites } from "../Context/FavoritesContext";
@@ -84,7 +86,7 @@ const CarCard = ({ carData }) => {
   return (
     <div className="px-10 mt-20 mb-20 lg:px-32 md:px-20">
       <h1 className="pb-20 text-4xl font-bold text-center text-black ">
-        Your Filtered Cars 🔥
+        The Latest Cars 🔥
       </h1>
       <Slider {...settings}>
         {carData.map((car, index) => (
